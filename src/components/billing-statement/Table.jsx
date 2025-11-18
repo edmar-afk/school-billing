@@ -1,8 +1,14 @@
-import React from "react";
-import NotificationsActiveIcon from '@mui/icons-material/NotificationsActive';
+import React, { useState } from "react";
+import NotificationsActiveIcon from "@mui/icons-material/NotificationsActive";
+import NotifyModal from "./NotifyModal";
+
 function Table() {
+  const [open, setOpen] = useState(false);
+
   return (
     <>
+      <NotifyModal open={open} onClose={() => setOpen(false)} />
+
       <div class="container mx-auto px-4 py-8">
         <div class="flex flex-col md:flex-row justify-between items-center mb-6">
           <div class="w-full md:w-1/3 mb-4 md:mb-0">
@@ -12,6 +18,7 @@ function Table() {
               class="w-full px-4 py-2 rounded-md border border-gray-300 bg-white focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
           </div>
+
           <a href="https://abhirajk.vercel.app/" target="blank">
             <button class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition duration-300">
               Add New Student
@@ -32,6 +39,7 @@ function Table() {
                 <th class="py-3 px-6 text-center">Actions</th>
               </tr>
             </thead>
+
             <tbody class="text-gray-600 text-sm">
               <tr class="border-b border-gray-200 hover:bg-gray-100">
                 <td class="py-3 px-6 text-left">Sample Name</td>
@@ -40,12 +48,17 @@ function Table() {
                 <td class="py-3 px-6 text-left">₱ 300.00</td>
                 <td class="py-3 px-6 text-left text-red-600">₱ 300.00</td>
                 <td class="py-3 px-6 text-left text-green-600">₱ 300.00</td>
+
                 <td class="py-3 px-6 text-center">
-                  <div class="flex flex-row item-center justify-center gap-6">
-                    <button class="w-4 mr-2 flex flex-col items-center transform hover:text-blue-500 hover:scale-110 duration-300 cursor-pointer">
-                      <NotificationsActiveIcon sx={{fontSize:16}}/>
+                  <div class="flex flex-row justify-center gap-6">
+                    <button
+                      onClick={() => setOpen(true)}
+                      class="w-4 mr-2 flex flex-col items-center transform hover:text-blue-500 hover:scale-110 duration-300 cursor-pointer"
+                    >
+                      <NotificationsActiveIcon sx={{ fontSize: 16 }} />
                       <p className="text-xs">Notify</p>
                     </button>
+
                     <button class="w-4 mr-2 flex flex-col items-center transform hover:text-red-500 hover:scale-110 duration-300 cursor-pointer">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -70,9 +83,7 @@ function Table() {
         </div>
 
         <div class="flex justify-between items-center mt-6">
-          <div>
-            <span class="text-sm text-gray-700">Total of 15 data</span>
-          </div>
+          <span class="text-sm text-gray-700">Total of 15 data</span>
         </div>
       </div>
     </>

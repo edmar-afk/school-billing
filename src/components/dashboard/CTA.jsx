@@ -14,18 +14,18 @@ function CTA() {
               Good Morning, Admin Name. Ready to start work?
             </h2>
             <p class="mt-6 text-base text-green-300">
-              We're excited to talk to you about your project requirements and
-              business goals.
+              Sample text sample text Sample text sample textSample text sample
+              textSample text sample text
             </p>
             <div class="mt-10 flex items-center justify-center gap-x-6 lg:justify-start">
               <a
                 href="#"
                 class="rounded-md bg-white px-3.5 py-2.5 text-sm font-semibold text-gray-900 hover:bg-gray-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
               >
-                Schedule a call
+                Sample text sample text
               </a>
               <a href="#" class="text-sm font-semibold leading-6 text-white">
-                Send an email
+                Sample text sample text
               </a>
             </div>
           </div>
