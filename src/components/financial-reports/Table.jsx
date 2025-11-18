@@ -13,8 +13,8 @@ function Table() {
             />
           </div>
           <a href="https://abhirajk.vercel.app/" target="blank">
-            <button class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition duration-300">
-              Add New Student
+            <button class="bg-green-500 text-white px-4 py-2 rounded-md hover:bg-green-600 transition duration-300">
+             Export to Excel
             </button>
           </a>
         </div>
