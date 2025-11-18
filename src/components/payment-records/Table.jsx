@@ -12,11 +12,7 @@ function Table() {
               class="w-full px-4 py-2 rounded-md border border-gray-300 bg-white focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
           </div>
-          <a href="https://abhirajk.vercel.app/" target="blank">
-            <button class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition duration-300">
-              Add New Student
-            </button>
-          </a>
+        
         </div>
 
         <div class="overflow-x-auto bg-white rounded-lg shadow">
@@ -25,8 +21,9 @@ function Table() {
               <tr class="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
                 <th class="py-3 px-6 text-left">ID</th>
                 <th class="py-3 px-6 text-left">Name</th>
-                <th class="py-3 px-6 text-left">Email</th>
-                <th class="py-3 px-6 text-left">Grade - Section</th>
+                <th class="py-3 px-6 text-left">Amount</th>
+                <th class="py-3 px-6 text-left">Date</th>
+                <th class="py-3 px-6 text-left">Payment Method</th>
                 <th class="py-3 px-6 text-center">Actions</th>
               </tr>
             </thead>
@@ -34,8 +31,9 @@ function Table() {
               <tr class="border-b border-gray-200 hover:bg-gray-100">
                 <td class="py-3 px-6 text-left">2025-123</td>
                 <td class="py-3 px-6 text-left">Sample Name</td>
-                <td class="py-3 px-6 text-left">sampleEmail@kerala.com</td>
-                <td class="py-3 px-6 text-left">Grade 2 - B</td>
+                <td class="py-3 px-6 text-left">₱ 1,500.00</td>
+                <td class="py-3 px-6 text-left">Nov. 18, 2025</td>
+                 <td class="py-3 px-6 text-left">Walk-in Payment</td>
                 <td class="py-3 px-6 text-center">
                   <div class="flex item-center justify-center gap-4">
                     <button class="w-4 mr-2 flex flex-col items-center transform hover:text-blue-500 hover:scale-110 duration-300 cursor-pointer">

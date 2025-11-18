@@ -10,6 +10,8 @@ import PeopleIcon from "@mui/icons-material/People";
 import PointOfSaleIcon from "@mui/icons-material/PointOfSale";
 import ExitToAppIcon from "@mui/icons-material/ExitToApp";
 import logo from "../assets/images/logo.jpg";
+import AccountBalanceWalletIcon from "@mui/icons-material/AccountBalanceWallet";
+
 const drawerWidth = 256;
 
 const links = [
@@ -29,9 +31,14 @@ const links = [
     path: "/student-records",
   },
   {
+    name: "Payment Records",
+    icon: <AccountBalanceWalletIcon className="mr-2" />,
+    path: "/payment-records",
+  },
+  {
     name: "Billing Statement",
     icon: <PointOfSaleIcon className="mr-2" />,
-    path: "/billing",
+    path: "/billing-statement",
   },
   {
     name: "Logout",
@@ -49,11 +56,7 @@ function Sidebar() {
       <div className="p-4 border-b border-gray-800">
         <div className="flex items-center justify-between">
           <span className="text-xl font-bold">Billing System</span>{" "}
-          <img
-            src={logo}
-            alt="Logo"
-            className="h-8 w-auto rounded-full"
-          />
+          <img src={logo} alt="Logo" className="h-8 w-auto rounded-full" />
         </div>
       </div>
 
@@ -82,11 +85,7 @@ function Sidebar() {
 
       <div className="mt-auto p-4 border-t border-gray-800">
         <div className="flex items-center">
-          <img
-            className="h-8 w-8 rounded-full"
-            src={logo}
-            alt=""
-          />
+          <img className="h-8 w-8 rounded-full" src={logo} alt="" />
           <div className="ml-3">
             <p className="text-sm font-medium text-white">Sample Admin Name</p>
             <p className="text-xs text-gray-400">Administrator</p>

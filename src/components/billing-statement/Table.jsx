@@ -1,5 +1,5 @@
 import React from "react";
-
+import NotificationsActiveIcon from '@mui/icons-material/NotificationsActive';
 function Table() {
   return (
     <>
@@ -23,36 +23,28 @@ function Table() {
           <table class="w-full table-auto">
             <thead>
               <tr class="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
-                <th class="py-3 px-6 text-left">ID</th>
                 <th class="py-3 px-6 text-left">Name</th>
-                <th class="py-3 px-6 text-left">Email</th>
-                <th class="py-3 px-6 text-left">Grade - Section</th>
+                <th class="py-3 px-6 text-left">Grade</th>
+                <th class="py-3 px-6 text-left">Tuition</th>
+                <th class="py-3 px-6 text-left">Miscellaneous</th>
+                <th class="py-3 px-6 text-left">Penalties</th>
+                <th class="py-3 px-6 text-left">Discount</th>
                 <th class="py-3 px-6 text-center">Actions</th>
               </tr>
             </thead>
             <tbody class="text-gray-600 text-sm">
               <tr class="border-b border-gray-200 hover:bg-gray-100">
-                <td class="py-3 px-6 text-left">2025-123</td>
                 <td class="py-3 px-6 text-left">Sample Name</td>
-                <td class="py-3 px-6 text-left">sampleEmail@kerala.com</td>
-                <td class="py-3 px-6 text-left">Grade 2 - B</td>
+                <td class="py-3 px-6 text-left">Grade 2</td>
+                <td class="py-3 px-6 text-left">₱ 5,000.00</td>
+                <td class="py-3 px-6 text-left">₱ 300.00</td>
+                <td class="py-3 px-6 text-left text-red-600">₱ 300.00</td>
+                <td class="py-3 px-6 text-left text-green-600">₱ 300.00</td>
                 <td class="py-3 px-6 text-center">
-                  <div class="flex item-center justify-center gap-4">
+                  <div class="flex flex-row item-center justify-center gap-6">
                     <button class="w-4 mr-2 flex flex-col items-center transform hover:text-blue-500 hover:scale-110 duration-300 cursor-pointer">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                      >
-                        <path
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          stroke-width="2"
-                          d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"
-                        />
-                      </svg>
-                      <p className="text-xs mr-1">Edit</p>
+                      <NotificationsActiveIcon sx={{fontSize:16}}/>
+                      <p className="text-xs">Notify</p>
                     </button>
                     <button class="w-4 mr-2 flex flex-col items-center transform hover:text-red-500 hover:scale-110 duration-300 cursor-pointer">
                       <svg
