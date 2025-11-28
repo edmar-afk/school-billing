@@ -12,7 +12,7 @@ function Table() {
               class="w-full px-4 py-2 rounded-md border border-gray-300 bg-white focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
           </div>
-          <a href="https://abhirajk.vercel.app/" target="blank">
+          <a href="#" target="blank">
             <button class="bg-green-500 text-white px-4 py-2 rounded-md hover:bg-green-600 transition duration-300">
              Export to Excel
             </button>

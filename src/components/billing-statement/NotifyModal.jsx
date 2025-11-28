@@ -1,6 +1,7 @@
 import React from "react";
 import { Modal, Box, Typography, Button } from "@mui/material";
 import emailImg from "../../assets/images/email.png";
+import EmailIcon from '@mui/icons-material/Email';
 export default function NotifyModal({ open, onClose }) {
   return (
     <Modal open={open} onClose={onClose}>
@@ -17,7 +18,7 @@ export default function NotifyModal({ open, onClose }) {
         }}
       >
         <Typography variant="h6">Send Mail Reminder to Sample Name</Typography>
-        <img src={emailImg} alt="" />
+        <EmailIcon/>
         <p className="font-light text-center text-xs mb-4">
           Please be informed that sending emails may take some time before
           students receive them. Thank you for your patience.
