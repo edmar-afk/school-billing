@@ -12,11 +12,11 @@ function Table() {
               class="w-full px-4 py-2 rounded-md border border-gray-300 bg-white focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
           </div>
-          <a href="#" target="blank">
+          <div>
             <button class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition duration-300">
               Add New Student
             </button>
-          </a>
+          </div>
         </div>
 
         <div class="overflow-x-auto bg-white rounded-lg shadow">
