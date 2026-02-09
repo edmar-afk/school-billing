@@ -15,30 +15,32 @@ import AccountBalanceWalletIcon from "@mui/icons-material/AccountBalanceWallet";
 const drawerWidth = 256;
 
 const links = [
-  {
-    name: "Dashboard",
-    icon: <DashboardIcon className="mr-2" />,
-    path: "/dashboard",
-  },
-  {
-    name: "Financial Reports",
-    icon: <CalculateIcon className="mr-2" />,
-    path: "/financial-reports",
-  },
+  // {
+  //   name: "Dashboard",
+  //   icon: <DashboardIcon className="mr-2" />,
+  //   path: "/dashboard",
+  // },
+
   {
     name: "Student Records",
     icon: <PeopleIcon className="mr-2" />,
     path: "/student-records",
   },
   {
-    name: "Payment Records",
-    icon: <AccountBalanceWalletIcon className="mr-2" />,
-    path: "/payment-records",
-  },
-  {
     name: "Billing Statement",
     icon: <PointOfSaleIcon className="mr-2" />,
     path: "/billing-statement",
+  },
+  // {
+  //   name: "Payment Records",
+  //   icon: <AccountBalanceWalletIcon className="mr-2" />,
+  //   path: "/payment-records",
+  // },
+
+  {
+    name: "Payment/Financial Records",
+    icon: <CalculateIcon className="mr-2" />,
+    path: "/financial-reports",
   },
   {
     name: "Logout",

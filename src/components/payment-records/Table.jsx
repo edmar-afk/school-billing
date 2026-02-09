@@ -1,6 +1,14 @@
-import React from "react";
-
+import React, { useEffect, useState } from "react";
+import api from "../../assets/api";
 function Table() {
+  const [billings, setBillings] = useState([]);
+
+  useEffect(() => {
+    api
+      .get("/api/billings/")
+      .then((res) => setBillings(res.data))
+      .catch(() => {});
+  }, []);
   return (
     <>
       <div class="container mx-auto px-4 py-8">
@@ -12,17 +20,16 @@ function Table() {
               class="w-full px-4 py-2 rounded-md border border-gray-300 bg-white focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
           </div>
-        
         </div>
 
         <div class="overflow-x-auto bg-white rounded-lg shadow">
           <table class="w-full table-auto">
             <thead>
               <tr class="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
-                <th class="py-3 px-6 text-left">ID</th>
+                <th class="py-3 px-6 text-left">Grade </th>
                 <th class="py-3 px-6 text-left">Name</th>
-                <th class="py-3 px-6 text-left">Amount</th>
-                <th class="py-3 px-6 text-left">Date</th>
+                <th class="py-3 px-6 text-left">Total Amount</th>
+                <th class="py-3 px-6 text-left">Date Issued</th>
                 <th class="py-3 px-6 text-left">Payment Method</th>
                 <th class="py-3 px-6 text-center">Actions</th>
               </tr>
@@ -33,7 +40,7 @@ function Table() {
                 <td class="py-3 px-6 text-left">Sample Name</td>
                 <td class="py-3 px-6 text-left">₱ 1,500.00</td>
                 <td class="py-3 px-6 text-left">Nov. 18, 2025</td>
-                 <td class="py-3 px-6 text-left">Walk-in Payment</td>
+                <td class="py-3 px-6 text-left">Walk-in Payment</td>
                 <td class="py-3 px-6 text-center">
                   <div class="flex item-center justify-center gap-4">
                     <button class="w-4 mr-2 flex flex-col items-center transform hover:text-blue-500 hover:scale-110 duration-300 cursor-pointer">

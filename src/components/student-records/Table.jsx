@@ -1,86 +1,142 @@
-import React from "react";
+/* eslint-disable no-unused-vars */
+import React, { useEffect, useState } from "react";
+import AddStudentModal from "./AddStudentModal";
+import EditStudentModal from "./EditStudentModal";
+import DeleteIcon from "@mui/icons-material/Delete";
+import EditIcon from "@mui/icons-material/Edit";
+import api from "../../assets/api";
+import Swal from "sweetalert2";
 
 function Table() {
+  const [students, setStudents] = useState([]);
+  const [search, setSearch] = useState("");
+
+  const fetchStudents = () => {
+    api
+      .get("/api/students/")
+      .then((res) => setStudents(res.data))
+      .catch((err) => console.error(err));
+  };
+
+  useEffect(() => {
+    fetchStudents();
+  }, []);
+
+  const filteredStudents = students.filter(
+    (student) =>
+      student.full_name.toLowerCase().includes(search.toLowerCase()) ||
+      student.email.toLowerCase().includes(search.toLowerCase()),
+  );
+
+  const handleDelete = async (studentId) => {
+    const result = await Swal.fire({
+      title: "Delete student?",
+      text: "This action cannot be undone.",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#d33",
+      confirmButtonText: "Delete",
+    });
+
+    if (!result.isConfirmed) return;
+
+    try {
+      await api.delete(`/api/students/delete/${studentId}/`);
+      setStudents((prev) => prev.filter((s) => s.id !== studentId));
+
+      Swal.fire({
+        icon: "success",
+        title: "Deleted",
+        text: "Student has been deleted",
+        timer: 1500,
+        showConfirmButton: false,
+      });
+    } catch (err) {
+      Swal.fire({
+        icon: "error",
+        title: "Error",
+        text: "Failed to delete student",
+      });
+    }
+  };
+
   return (
     <>
-      <div class="container mx-auto px-4 py-8">
-        <div class="flex flex-col md:flex-row justify-between items-center mb-6">
-          <div class="w-full md:w-1/3 mb-4 md:mb-0">
+      <div className="container mx-auto px-4 py-8">
+        <div className="flex flex-col md:flex-row justify-between items-center mb-6">
+          <div className="w-full md:w-1/3 mb-4 md:mb-0">
             <input
               type="text"
               placeholder="Search students..."
-              class="w-full px-4 py-2 rounded-md border border-gray-300 bg-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+              className="w-full px-4 py-2 rounded-md border border-gray-300 bg-white focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
           </div>
           <div>
-            <button class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition duration-300">
-              Add New Student
-            </button>
+            <AddStudentModal onSuccess={fetchStudents} />
           </div>
         </div>
 
-        <div class="overflow-x-auto bg-white rounded-lg shadow">
-          <table class="w-full table-auto">
+        <div className="overflow-x-auto bg-white rounded-lg shadow">
+          <table className="w-full table-auto">
             <thead>
-              <tr class="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
-                <th class="py-3 px-6 text-left">ID</th>
-                <th class="py-3 px-6 text-left">Name</th>
-                <th class="py-3 px-6 text-left">Email</th>
-                <th class="py-3 px-6 text-left">Grade - Section</th>
-                <th class="py-3 px-6 text-center">Actions</th>
+              <tr className="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
+                <th className="py-3 px-6 text-center">ID</th>
+                <th className="py-3 px-6 text-center">Student Name</th>
+                <th className="py-3 px-6 text-center">Parent/Guardian Email</th>
+                <th className="py-3 px-6 text-center">Grade Level</th>
+                <th className="py-3 px-6 text-center">Actions</th>
               </tr>
             </thead>
-            <tbody class="text-gray-600 text-sm">
-              <tr class="border-b border-gray-200 hover:bg-gray-100">
-                <td class="py-3 px-6 text-left">2025-123</td>
-                <td class="py-3 px-6 text-left">Sample Name</td>
-                <td class="py-3 px-6 text-left">sampleEmail@kerala.com</td>
-                <td class="py-3 px-6 text-left">Grade 2 - B</td>
-                <td class="py-3 px-6 text-center">
-                  <div class="flex item-center justify-center gap-4">
-                    <button class="w-4 mr-2 flex flex-col items-center transform hover:text-blue-500 hover:scale-110 duration-300 cursor-pointer">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                      >
-                        <path
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          stroke-width="2"
-                          d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"
+            <tbody className="text-gray-600 text-sm">
+              {filteredStudents.map((student) => (
+                <tr
+                  key={student.id}
+                  className="border-b border-gray-200 hover:bg-gray-100"
+                >
+                  <td className="py-3 px-6 text-center">{student.id}</td>
+                  <td className="py-3 px-6 text-center">{student.full_name}</td>
+                  <td className="py-3 px-6 text-center">{student.email}</td>
+                  <td className="py-3 px-6 text-center">{student.grade}</td>
+                  <td className="py-3 px-6 text-center">
+                    <div className="flex items-center justify-center gap-4">
+                      <div className="transform hover:scale-110 duration-300 cursor-pointer text-blue-500">
+                        <EditStudentModal
+                          studentId={student.id}
+                          studName={student.full_name}
+                          email={student.email}
+                          grade={student.grade}
+                          onUpdated={fetchStudents}
                         />
-                      </svg>
-                      <p className="text-xs mr-1">Edit</p>
-                    </button>
-                    <button class="w-4 mr-2 flex flex-col items-center transform hover:text-red-500 hover:scale-110 duration-300 cursor-pointer">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
+                      </div>
+
+                      <button
+                        className="transform hover:scale-110 duration-300 cursor-pointer text-red-500"
+                        onClick={() => handleDelete(student.id)}
                       >
-                        <path
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          stroke-width="2"
-                          d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
-                        />
-                      </svg>
-                      <p className="text-xs">Delete</p>
-                    </button>
-                  </div>
-                </td>
-              </tr>
+                        <DeleteIcon fontSize="small" /> Delete
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+              ))}
+
+              {filteredStudents.length === 0 && (
+                <tr>
+                  <td colSpan="5" className="py-6 text-center text-gray-400">
+                    No students found
+                  </td>
+                </tr>
+              )}
             </tbody>
           </table>
         </div>
 
-        <div class="flex justify-between items-center mt-6">
-          <div>
-            <span class="text-sm text-gray-700">Total of 15 data</span>
-          </div>
+        <div className="flex justify-between items-center mt-6">
+          <span className="text-sm text-gray-700">
+            Total of {filteredStudents.length} data
+          </span>
         </div>
       </div>
     </>

@@ -84,7 +84,7 @@ function Login() {
                   type="button"
                   class="w-full shadow-xl py-2.5 px-4 text-[15px] font-medium tracking-wide rounded-lg text-white bg-red-600 hover:bg-red-700 focus:outline-none cursor-pointer"
                 >
-                  <Link to={"/dashboard"}>Sign in </Link>
+                  <Link to={"/financial-reports"}>Sign in </Link>
                 </button>
                 <p class="text-sm !mt-6 text-center text-slate-600">
                   Don't have an account{" "}
